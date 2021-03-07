@@ -18,17 +18,17 @@
 ### Association
 
 - has_many : items
-- has_many : purchase
+- has_many : purchases
 
 
 ### items テーブル
 
 | Columname   | Type          | Options           |
 | ----------- | ------------- | ----------------- |
-| item_name   | string        | null: false       |
+| name   　　　| string        | null: false       |
 | text        | text          | null: false       |
 | category_id | integer       | null: false       |
-| state_id    | integer       | null: false       |
+| states_id   | integer       | null: false       |
 | charge_id   | integer       | null: false       |
 | area_id     | integer       | null: false       |
 | date_id     | integer       | null: false       |
@@ -38,20 +38,19 @@
 ### Association
 
 - has_one : purchase
-- belongs_to : users
+- belongs_to : user
 
 
-### address テーブル
+### addresses テーブル
 
 | Columname     | Type         | Options           |
 | ------------- | ------------ | ----------------- |
 | postal_code   | string       | null: false       |
-| prefectures   | string       | null: false       |
+| prefectures   | integer      | null: false       |
 | municipality  | string       | null: false       |
 | address       | string       | null: false       |
-| building      | string       | null: false       |
+| building      | string       |                   |
 | phone_number  | string       | null: false       |
-| comment       | text         | null: false       |
 | purchase      | references   | foreign_key: true |
 
 ### Association
@@ -59,7 +58,7 @@
 - belongs_to : purchase
 
 
-### purchase テーブル
+### purchases テーブル
 
 | Columname     | Type         | Options           |
 | ------------- | ------------ | ----------------- |
@@ -68,6 +67,6 @@
 
 ### Association
 
-- belongs_to : users
-- belongs_to : items
+- belongs_to : user
+- belongs_to : item
 - has_one : address
