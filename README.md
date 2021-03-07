@@ -4,19 +4,16 @@
 
 ### users テーブル
 
-| Columname     | Type   | Options     |
-| ------------- | ------ | ----------- |
-| nickname      | string | null: false |
-| email         | string | null: false |
-| password      | string | null: false |
-| last_name     | string | null: false |
-| first_name    | string | null: false |
-| last_name_f   | string | null: false |
-| first_name_f  | string | null: false |
-| birtday_year  | string | null: false |
-| birtday_month | string | null: false |
-| birtday_day   | string | null: false |
-| phone_number  | text   | null: false |
+| Columname          | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_f        | string | null: false               |
+| first_name_f       | string | null: false               |
+| birtday            | date   | null: false               |
 
 ### Association
 
@@ -26,18 +23,17 @@
 
 ### items テーブル
 
-| Columname  | Type          | Options     |
-| ---------- | ------------- | ----------- |
-| item_name  | string        | null: false |
-| image      |               |             |
-| text       | text          | null: false |
-| category   | string        | null: false |
-| status     | string        | null: false |
-| charges    | string        | null: false |
-| area       | string        | null: false |
-| date       | string        | null: false |
-| price      | string        | null: false |
-| user       | references    |             |
+| Columname   | Type          | Options           |
+| ----------- | ------------- | ----------------- |
+| item_name   | string        | null: false       |
+| text        | text          | null: false       |
+| category_id | integer       | null: false       |
+| state_id    | integer       | null: false       |
+| charge_id   | integer       | null: false       |
+| area_id     | integer       | null: false       |
+| date_id     | integer       | null: false       |
+| price       | integer       | null: false       |
+| user        | references    | foreign_key: true |
 
 ### Association
 
@@ -45,25 +41,33 @@
 - belongs_to : users
 
 
+### address テーブル
+
+| Columname     | Type         | Options           |
+| ------------- | ------------ | ----------------- |
+| postal_code   | string       | null: false       |
+| prefectures   | string       | null: false       |
+| municipality  | string       | null: false       |
+| address       | string       | null: false       |
+| building      | string       | null: false       |
+| phone_number  | string       | null: false       |
+| comment       | text         | null: false       |
+| purchase      | references   | foreign_key: true |
+
+### Association
+
+- belongs_to : purchase
+
+
 ### purchase テーブル
 
-| Columname     | Type         | Options     |
-| ------------- | ------------ | ----------- |
-| card_number   | string       | null: false |
-| month         | string       | null: false |
-| year          | string       | null: false |
-| security_code | string       | null: false |
-| postal_code   | string       | null: false |
-| prefectures   | string       | null: false |
-| municipality  | string       | null: false |
-| address       | string       | null: false |
-| building      | string       | null: false |
-| phone_number  | string       | null: false |
-| comment       | text         | null: false |
-| user          | references   |             |
-| item          | references   |             |
+| Columname     | Type         | Options           |
+| ------------- | ------------ | ----------------- |
+| user          | references   | foreign_key: true |
+| item          | references   | foreign_key: true |
 
 ### Association
 
 - belongs_to : users
 - belongs_to : items
+- has_one : address
