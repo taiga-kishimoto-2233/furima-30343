@@ -4,16 +4,17 @@
 
 ### users テーブル
 
-| Columname          | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false               |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
-| last_name          | string | null: false               |
-| first_name         | string | null: false               |
-| last_name_f        | string | null: false               |
-| first_name_f       | string | null: false               |
-| birtday            | date   | null: false               |
+| Columname             | Type   | Options                   |
+| --------------------- | ------ | ------------------------- |
+| nickname              | string | null: false               |
+| email                 | string | null: false, unique: true |
+| encrypted_password    | string | null: false               |
+| password_confirmation | string | null: false               |
+| last_name             | string | null: false               |
+| first_name            | string | null: false               |
+| last_name_f           | string | null: false               |
+| first_name_f          | string | null: false               |
+| birthday              | date   | null: false               |
 
 ### Association
 
