@@ -9,12 +9,11 @@ class User < ApplicationRecord
 
   # has_many : items
   # has_many : purchases
-  
-  validates :password, :password_confirmation, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
-  validates :email, format:{with: VALID_EMAIL_REGEX}, uniqueness: true, uniqueness:{case_sensitive: true}
-  validates :nickname, :password_confirmation, :last_name, :first_name, :last_name_f, :first_name_f, :birthday, presence: true
-  
-  validates :last_name, :first_name, format:{with: Japanese_regex}
-  validates :last_name_f, :first_name_f, format:{with: Katakana_regex}
 
+  validates :password, :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/ }
+  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: true, uniqueness: { case_sensitive: true }
+  validates :nickname, :password_confirmation, :last_name, :first_name, :last_name_f, :first_name_f, :birthday, presence: true
+
+  validates :last_name, :first_name, format: { with: Japanese_regex }
+  validates :last_name_f, :first_name_f, format: { with: Katakana_regex }
 end
