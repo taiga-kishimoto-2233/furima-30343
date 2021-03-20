@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'ユーザ新規登録' do
-
     context 'ユーザ新規登録ができるとき' do
       it '全ての値が正しければ登録できること' do
         user = FactoryBot.build(:user)
