@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it 'メールアドレスが重複すると登録できないこと' do
-        @user = FactoryBot.create(:user)
+        @user.save
         user2 = FactoryBot.build(:user)
         user2.email = @user.email
         user2.valid?
