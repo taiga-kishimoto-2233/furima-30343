@@ -23,17 +23,17 @@
 
 ### items テーブル
 
-| Columname   | Type          | Options           |
-| ----------- | ------------- | ----------------- |
-| name   　　　| string        | null: false       |
-| text        | text          | null: false       |
-| category_id | integer       | null: false       |
-| states_id   | integer       | null: false       |
-| charge_id   | integer       | null: false       |
-| area_id     | integer       | null: false       |
-| date_id     | integer       | null: false       |
-| price       | integer       | null: false       |
-| user        | references    | foreign_key: true |
+| Columname       | Type          | Options           |
+| --------------- | ------------- | ----------------- |
+| name            | string        | null: false       |
+| text            | text          | null: false       |
+| category_id     | integer       | null: false       |
+| states_id       | integer       | null: false       |
+| charge_id       | integer       | null: false       |
+| area_id         | integer       | null: false       |
+| exhibit_date_id | integer       | null: false       |
+| price           | integer       | null: false       |
+| user            | references    | foreign_key: true |
 
 ### Association
 
