@@ -10,6 +10,6 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :exhibit_date
 
-  validates :name, :text, :category_id, :states_id, :charge_id, :area_id, :exhibit_date_id, presence: true
+  validates :name, :text, :category_id, :states_id, :charge_id, :area_id, :exhibit_date_id, :price, presence: true
   validates :category_id, :states_id, :charge_id, :area_id, :exhibit_date_id, numericality: { other_than: 1 }
 end
