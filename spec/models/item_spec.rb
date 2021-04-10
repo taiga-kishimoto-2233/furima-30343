@@ -59,20 +59,39 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it '価格の範囲が、¥300以上であること' do
-        @item.price = '299'
+      it '価格が、¥300未満では保存できないこと' do
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
-      it '価格の範囲が、¥9,999,999以下であること' do
-        @item.price = '10,000,000'
+      it '価格が、¥9,999,999より高いと保存でいないこと' do
+        @item.price = 10,000,000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
-      it '販売価格は半角数字のみ保存可能であること' do
+      it '販売価格は全角数字では保存できないこと' do
         @item.price = '３００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+      it '販売価格は半角英数字混合では保存できないこと' do
+        @item.price = '1test1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+      it '販売価格は半角英語だけでは保存できないこと' do
+        @item.price = 'test'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+      it 'アクティブハッシュを利用するカラムは、ID:1が登録できないこと' do
+        @item.category_id = 1
+        @item.states_id = 1
+        @item.charge_id = 1
+        @item.area_id = 1
+        @item.exhibit_date_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1', 'States must be other than 1', 'Charge must be other than 1', 'Area must be other than 1', 'Exhibit date must be other than 1')
       end
     end
   end
