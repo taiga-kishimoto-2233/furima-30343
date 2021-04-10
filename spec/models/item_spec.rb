@@ -84,14 +84,30 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
-      it 'アクティブハッシュを利用するカラムは、ID:1が登録できないこと' do
+      it 'カテゴリー情報は、ID:1では登録できないこと' do
         @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+      it '商品の状態情報は、ID:1では登録できないこと' do
         @item.states_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('States must be other than 1')
+      end
+      it '配送料情報は、ID:1では登録できないこと' do
         @item.charge_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Charge must be other than 1')
+      end
+      it '発送元情報は、ID:1では登録できないこと' do
         @item.area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Area must be other than 1')
+      end
+      it '発送日数情報は、ID:1では登録できないこと' do
         @item.exhibit_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1', 'States must be other than 1', 'Charge must be other than 1', 'Area must be other than 1', 'Exhibit date must be other than 1')
+        expect(@item.errors.full_messages).to include('Exhibit date must be other than 1')
       end
     end
   end
