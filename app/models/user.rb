@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   validates :last_name, :first_name, format: { with: Japanese_regex }
   validates :last_name_f, :first_name_f, format: { with: Katakana_regex }
+
+  has_many :items
 end
