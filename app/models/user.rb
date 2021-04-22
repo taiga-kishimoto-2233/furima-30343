@@ -14,4 +14,5 @@ class User < ApplicationRecord
   validates :last_name_f, :first_name_f, format: { with: Katakana_regex }
 
   has_many :items
+  has_many :purchases
 end
