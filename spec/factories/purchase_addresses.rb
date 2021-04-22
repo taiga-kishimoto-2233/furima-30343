@@ -1,9 +1,6 @@
 FactoryBot.define do
   factory :purchase_address do
-    number        { '4242424242424242' }
-    exp_month     { '3' }
-    exp_year      { '33' }
-    cvc           { '123' }
+    token         {"tok_abcdefghijk00000000000000000"}
     postal_code   { '111-1111' }
     area_id       { 48 }
     municipality  { '横浜市西区' }

@@ -14,25 +14,10 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '登録情報が誤っているとき' do
-      it 'カード情報が空のとき' do
-        @purchase_address.number = ""
+      it 'tokenが空のとき' do
+        @purchase_address.token = nil
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Number can't be blank")
-      end
-      it 'カードの有効期限(月)が空のとき' do
-        @purchase_address.exp_month = ""
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Exp month can't be blank")
-      end
-      it 'カードの有効期限(年)が空のとき' do
-        @purchase_address.exp_year = ""
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Exp year can't be blank")
-      end
-      it 'cvcが空のとき' do
-        @purchase_address.cvc = ""
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Cvc can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
       it '郵便番号が空のとき' do
         @purchase_address.postal_code = ""
