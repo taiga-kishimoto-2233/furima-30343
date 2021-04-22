@@ -10,7 +10,7 @@ class PurchasesController < ApplicationController
     if @purchase.valid?
       pay_item
       @purchase.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
@@ -24,14 +24,14 @@ class PurchasesController < ApplicationController
 
   def pay_item
     @item = Item.find_by(price: @item.price)
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount:   @item.price,
-      card:     purchase_params[:token],
+      amount: @item.price,
+      card: purchase_params[:token],
       currency: 'jpy'
     )
   end
-  
+
   def purchase_params
     params.permit(
       :token,
@@ -40,10 +40,11 @@ class PurchasesController < ApplicationController
       :municipality,
       :address,
       :building,
-      :phone_number)
-      .merge(
-        user_id: current_user.id,
-        item_id: @item.id
-      )
+      :phone_number
+    )
+          .merge(
+            user_id: current_user.id,
+            item_id: @item.id
+          )
   end
 end
