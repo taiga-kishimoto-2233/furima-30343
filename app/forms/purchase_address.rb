@@ -4,10 +4,10 @@ class PurchaseAddress
   attr_accessor :user_id,
                 :item_id,
                 # :token,
-                # :number,
-                # :exp_month,
-                # :exp_year,
-                # :cvc,
+                :number,
+                :exp_month,
+                :exp_year,
+                :cvc,
                 :postal_code,
                 :area_id,
                 :municipality,
@@ -18,12 +18,12 @@ class PurchaseAddress
   with_options presence: true do
     # purchaseモデルのバリデーション
     validates :user_id,
-              :item_id
+              :item_id,
               # :token
-              # :number,
-              # :exp_month,
-              # :exp_year,
-              # :cvc
+              :number,
+              :exp_month,
+              :exp_year,
+              :cvc
     # addressモデルのバリデーション
     validates :postal_code,
               :area_id,
@@ -39,7 +39,7 @@ class PurchaseAddress
     # 購入の情報を保存
     purchase = Purchase.create(
       user_id: user_id,
-      item_id: item_id
+      item_id: item_id,
       # token: token
       # number: number,
       # exp_month: exp_month,

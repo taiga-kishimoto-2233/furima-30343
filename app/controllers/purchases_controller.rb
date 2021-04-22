@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     @purchase = PurchaseAddress.new(purchase_params)
     if @purchase.valid?
       @purchase.save
@@ -24,10 +24,10 @@ class PurchasesController < ApplicationController
   
   def purchase_params
     params.permit(
-      # :number,
-      # :exp_month,
-      # :exp_year,
-      # :cvc,
+      :number,
+      :exp_month,
+      :exp_year,
+      :cvc,
       # :token,
       :postal_code,
       :area_id,
