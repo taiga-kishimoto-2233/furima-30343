@@ -53,13 +53,11 @@ ActiveRecord::Schema.define(version: 2021_04_21_090324) do
     t.integer "states_id", null: false
     t.integer "charge_id", null: false
     t.integer "area_id", null: false
+    t.integer "exhibit_date_id", null: false
     t.integer "price", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "exhibit_date_id"
-    t.integer "exhibit_date"
-    t.integer "date_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
