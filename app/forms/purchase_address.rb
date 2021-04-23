@@ -18,7 +18,6 @@ class PurchaseAddress
               :area_id,
               :municipality,
               :address,
-              :building,
               :phone_number
     validates :area_id, numericality: { other_than: 1 }
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
@@ -29,7 +28,6 @@ class PurchaseAddress
     purchase = Purchase.create(
       user_id: user_id,
       item_id: item_id,
-      token: token
     )
     Address.create(
       postal_code: postal_code,
